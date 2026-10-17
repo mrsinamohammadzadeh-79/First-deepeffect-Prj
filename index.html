@@ -54,6 +54,17 @@
       .dl-hand { height: 46px; }
       .dl-note { font-size: 0.6rem; }
     }
+
+    /* === MOBILE SCROLL SMOOTHNESS === */
+    /* Keep scroll-behavior on auto: GSAP ScrollTrigger + Lenis handle the scroll themselves. */
+    html { scroll-behavior: auto !important; }
+    html, body { overscroll-behavior: none; }
+    /* Promote the pinned hero layers so the browser can composite them on the GPU. */
+    .hero, .hero__ambient-container, #hero-ambient { will-change: transform; }
+    @media (max-width: 820px) {
+      /* Blur is expensive on mobile; the overlay is still legible without it. */
+      .hero__menu-overlay { -webkit-backdrop-filter: none; backdrop-filter: none; }
+    }
     </style>
   </head>
   <body>
